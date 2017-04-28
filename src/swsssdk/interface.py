@@ -320,6 +320,9 @@ class DBInterface(object):
         Two timeouts are at work here:
         1. Notification timeout - how long to wait before giving up on receiving any given pub-sub message.
         2. Max data wait - swsssdk-specific. how long to wait for the data to populate (in absolute time)
+        The function returns:
+          True if we receive some updates from keyspace
+          False when we get tineout, and no updates from key space        
         """
         start = time.time()
         logger.debug("Listening on pubsub channel '{}'".format(db_name))
